@@ -1,0 +1,26 @@
+syntax = "proto3";
+package protobuf;
+message Chat {
+float num_float = 1;
+double num_double = 2;
+int32 num_int32 = 3;
+int64 num_int64 = 4;
+uint32 num_uint32 = 5;
+uint64 num_uint64 = 6;
+sint32 num_sint32 = 7;
+sint64 num_sint64 = 8;
+fixed32 num_fixed32 = 9;
+fixed64 num_fixed64 = 10;
+sfixed32 num_sfixed32 = 11;
+sfixed64 num_sfixed64 = 12;
+bool b_bool = 13;
+string s_string = 14;
+bytes bs_bytes = 15;
+
+enum EType
+{
+    Num,Bool,string
+}
+
+
+}
