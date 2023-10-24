@@ -1,0 +1,20 @@
+# uGUI的合批
+##1. 合批规则
+```cs
+if(需要渲染 == false) 
+{
+  depth = -1;
+  return depth;
+}
+if(CurrentUI下面没有其他UI元素与其相交)
+{
+    depth = 0;
+    return depth;
+}
+
+if(CurrentUI与LowerUI可以合批(材质和贴图完全相同))
+{
+  CurrentUI.Depth = LowerUI.Depth；
+} 
+else
+```
