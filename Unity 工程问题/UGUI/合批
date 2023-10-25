@@ -6,15 +6,30 @@ if(需要渲染 == false)
   depth = -1;
   return depth;
 }
-if(CurrentUI下面没有其他UI元素与其相交)
+if(CurrentUI与下面其他UI元素其相交个数 == 0)
 {
     depth = 0;
     return depth;
 }
-
-if(CurrentUI与LowerUI可以合批(材质和贴图完全相同))
+else if(CurrentUI与下面其他UI元素其相交个数 == 1)
 {
-  CurrentUI.Depth = LowerUI.Depth；
-} 
+  if(CurrentUI与LowerUI可以合批(材质和贴图完全相同))
+  {
+    CurrentUI.Depth = LowerUI.Depth；
+  } 
+  else
+  {
+    CurrentUI.Depth= LowerUI.Depth + 1
+  }
+}
 else
+{
+  分别计算出n个Depth(Depth_1、Depth_2、Depth_3…)，然后CurrentUI.Depth取其最大值，即CurrentUI.Depth = max(Depth_1, Depth_2, Depth_3，…)
+}
+
+先按Depth从小到大的顺序排序;
+Depth排完之后，Depth相同的元素再按material ID从小到大排序;
+material ID排完之后，material ID相同的元素再按texture ID从小到大排序;
+textrure ID排完之后，textrure ID相同的元素最后再按在Hierarchy上的顺序排序(Hierarchy越上面的越在队列前面);
 ```
+通过上面的逻辑，最后获得一个排序好的列表，其中相邻且材质纹理相同的对象则可以合批。
