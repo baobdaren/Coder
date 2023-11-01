@@ -16,6 +16,6 @@ Unity OverDraw是移动端和VR设备上性能最大的问题之一。
 # 如何查看overdraw
 * unity自带工具
 * renderDoc
-* 使用该开源工具（ComputeShader 量化OverDraw）Github[https://github.com/Nordeus/Unite2017/tree/master/OverdrawMonitor]
+* 使用该开源工具（ComputeShader 量化OverDraw）(Github)[https://github.com/Nordeus/Unite2017/tree/master/OverdrawMonitor]
 
 # 如何减少overdraw
