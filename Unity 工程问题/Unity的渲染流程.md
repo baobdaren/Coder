@@ -13,4 +13,5 @@
 * 逐片元操作（合并--opengl）：包含了深度测试，模板测试，混合
 
 模板测试可以认为是可控制深度的深度测试，模板测试是针对片元的，深度测试是针对像素的。模板测试自由度更高，可定义的配置也更多。  
-[模板测试案例](https://blog.csdn.net/SliverAsh_/article/details/127427617)
+[模板测试案例](https://blog.csdn.net/SliverAsh_/article/details/127427617)  
+
