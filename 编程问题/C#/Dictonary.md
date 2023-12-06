@@ -1,0 +1,40 @@
+# 基本原理
+在C#中，我们可以阅读.net源码。  
+可以看到，.net的字典对象主要存储了两个数组。  
+基本定义如下
+```CS
+private struct Entry {
+    public int hashCode;    // Lower 31 bits of hash code, -1 if unused
+    public int next;        // Index of next entry, -1 if last
+    public TKey key;           // Key of entry
+    public TValue value;         // Value of entry
+}
+ 
+private int[] buckets;
+private Entry[] entries;
+//...
+```
+*  entries：Entry的数组，存储了所有的Entry
+*  bucket：int[]类型，哈希桶保存了每个Entry在entries中的索引
+
+Entry的Next保存了同一桶中（哈希值相同）的另外一个Key的桶索引。
+```CS
+// 获取Key的哈希值，和哈希值的桶索引
+int hashCode = comparer.GetHashCode(key) & 0x7FFFFFFF;
+int targetBucket = hashCode % buckets.Length;
+```
+# 哈希碰撞
+读取/保存时可能发生哈希碰撞，即不同的key得到的哈希值相同。在C#中采取拉链法，即每个哈希桶保存一个链表。  
+逻辑代码
+```CS
+// 1.获取key的哈希和哈希桶的索引
+int hashCode = getKeyHashCode(findingKey) & 0x7fffffff
+int targetHashBucket = hashCode % buckets.Length
+// 2.使用哈希桶的索引在entries中找到桶中链表的第一个节点
+Enrty node = entries[targetHashBucket]
+// 3.对比该链表节点的哈希值和key是否相同
+bool isFindingTarget = (node.hashCode == hashCode) && (node.key == findingKey)
+// 4.相同即该entry的value就是key的映射，如果key不同则对比当前entry.next节点，返回3
+if(isFindingtarget) {return node.value;}
+else {node = node.next; goto 3;}
+```
