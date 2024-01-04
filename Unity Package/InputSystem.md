@@ -16,3 +16,5 @@ PlayerInput组件用于接受玩家输入。
 ```cs
 GetComponent<PlayerInput>().actions.FindAction("Fire").started += TestInputSystem_started;
 ```
+# 快捷键修改
+* 重新绑定新的案件可以通过修改json文件/rebind类实现。
