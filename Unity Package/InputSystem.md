@@ -1,0 +1,2 @@
+# unity输入系统InputSystem
+InputSystem是用于取代旧的InputManager的方案，采用输入映射机制。
