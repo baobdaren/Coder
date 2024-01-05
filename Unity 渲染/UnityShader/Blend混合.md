@@ -31,3 +31,7 @@ OP很多，常用以下
 * Add/Sub：相加/相减
 * RevSub：目标-源
 * Min/Max：去最小/最大值
+
+## 常见混合类型
+* Blend SrcAlpha OneMinusSrcAlpha：传统透明度，着色器物体为玻璃
+* Blend One One：加法
